@@ -21,6 +21,10 @@ import {
   FooterV3PreviewControls,
 } from "@/components/dev/FooterV3PreviewContext";
 import {
+  ReviewboxPreviewProvider,
+  ReviewboxBackgroundControls,
+} from "@/components/dev/ReviewboxPreviewContext";
+import {
   SpacerStripePreviewProvider,
   SpacerStripePreviewControls,
   SpacerGradientPreviewControls,
@@ -64,8 +68,9 @@ export function SectionSwitcher({
   const isHeroV21 = group === "hero" && activeVariantId === "hero-v2.1";
   const isPortfolioV1 = group === "portfolio" && activeVariantId === "portfolio-v1";
   const isFooterV3 = group === "footer" && activeVariantId === "footer-v3";
+  const isReviewboxV1 = group === "reviewbox" && activeVariantId === "reviewbox-v1";
   const usesButtonPreview = isHeaderV3 || isHeroV21;
-  const usesExtraControls = usesButtonPreview || isPortfolioV1 || isFooterV3;
+  const usesExtraControls = usesButtonPreview || isPortfolioV1 || isFooterV3 || isReviewboxV1;
 
   const switcher = (
     <div
@@ -120,6 +125,7 @@ export function SectionSwitcher({
         )}
         {isPortfolioV1 && <PortfolioPreviewControls />}
         {isFooterV3 && <FooterV3PreviewControls />}
+        {isReviewboxV1 && <ReviewboxBackgroundControls />}
         {extraControls?.(activeVariantId)}
       </label>
       {activeVariant.render()}
@@ -148,6 +154,10 @@ export function SectionSwitcher({
 
   if (isFooterV3) {
     return <FooterV3PreviewProvider>{switcher}</FooterV3PreviewProvider>;
+  }
+
+  if (isReviewboxV1) {
+    return <ReviewboxPreviewProvider>{switcher}</ReviewboxPreviewProvider>;
   }
 
   return switcher;

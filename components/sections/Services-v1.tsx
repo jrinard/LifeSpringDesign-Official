@@ -31,7 +31,30 @@ export type ServiceV1 = {
   icon: string;
   /** Descriptive alt text for logo images — omit for decorative icons */
   iconAlt?: string;
+  /** Optional inline link at the start of the description, e.g. Reviewbox.io */
+  productLink?: { label: string; href: string };
 };
+
+function ServiceDescription({ description, productLink }: Pick<ServiceV1, "description" | "productLink">) {
+  if (!productLink) {
+    return <>{description}</>;
+  }
+
+  return (
+    <>
+      Use{" "}
+      <a
+        href={productLink.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-foreground underline decoration-accent-blue/40 underline-offset-2 transition-colors hover:text-accent-blue"
+      >
+        {productLink.label}
+      </a>{" "}
+      {description}
+    </>
+  );
+}
 
 function ServiceIcon({ icon, alt }: { icon: string; alt?: string }) {
   if (icon.startsWith("/")) {
@@ -41,12 +64,12 @@ function ServiceIcon({ icon, alt }: { icon: string; alt?: string }) {
       <Image
         src={icon}
         alt={alt ?? ""}
-        width={isLogo ? 120 : 44}
-        height={isLogo ? 40 : 44}
+        width={isLogo ? 160 : 44}
+        height={isLogo ? 48 : 44}
         className={cn(
           "shrink-0 object-contain",
           isLogo
-            ? "h-8 w-auto max-w-[4.5rem] sm:h-9 sm:max-w-[5rem]"
+            ? "h-10 w-auto max-w-[6rem] sm:h-12 sm:max-w-[7rem]"
             : "h-8 w-8 sm:h-9 sm:w-9",
         )}
         aria-hidden={alt ? undefined : true}
@@ -108,7 +131,13 @@ export function ServicesV1({
         </div>
 
         <div className={cn("mt-12 gap-5", getServicesV1GridClassName(layoutWidth))}>
-          {services.map((service) => (
+          {services.map((service) => {
+            const isLogo = service.icon.startsWith("/") && /logo/i.test(service.icon);
+            const icon = (
+              <ServiceIcon icon={service.icon} alt={service.iconAlt} />
+            );
+
+            return (
             <article
               key={service.title}
               className={cn(
@@ -117,10 +146,26 @@ export function ServicesV1({
               )}
             >
               <h3 className="flex items-start gap-2.5 font-serif text-base font-medium uppercase tracking-wide text-foreground sm:text-lg">
-                <ServiceIcon icon={service.icon} alt={service.iconAlt} />
+                {isLogo && service.productLink ? (
+                  <a
+                    href={service.productLink.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 transition-opacity hover:opacity-85"
+                  >
+                    {icon}
+                  </a>
+                ) : (
+                  icon
+                )}
                 <span>{service.title}</span>
               </h3>
-              <p className="mt-2.5 text-sm leading-snug text-muted sm:text-base">{service.description}</p>
+              <p className="mt-2.5 text-sm leading-snug text-muted sm:text-base">
+                <ServiceDescription
+                  description={service.description}
+                  productLink={service.productLink}
+                />
+              </p>
               <ul className="mt-4 space-y-0.5 border-t border-border pt-4">
                 {service.bullets.map((item) => (
                   <li
@@ -132,7 +177,8 @@ export function ServicesV1({
                 ))}
               </ul>
             </article>
-          ))}
+            );
+          })}
           {cta && (
             <div
               className={cn(

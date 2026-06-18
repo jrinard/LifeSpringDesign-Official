@@ -17,6 +17,7 @@ export const defaultPlaygroundSections: PlaygroundSectionConfig[] = [
   { group: "spacer", defaultVariant: "spacer-v1", preview: false },
   { group: "flipCards", preview: false },
   { group: "services", defaultVariant: "services-v1", preview: false },
+  { group: "reviewbox", defaultVariant: "reviewbox-v1", preview: false },
   { group: "portfolio", preview: false },
   { group: "testimonials", defaultVariant: "testimonials-v3", preview: false },
   { group: "cta", preview: false },

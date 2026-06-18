@@ -18,13 +18,13 @@ export const heroV21Demo = {
     {
       title: "Web Design and Development",
       description: "Fast, polished sites built around how you actually work.",
-      href: "/services",
+      href: "#services",
     },
     {
       title: "Grow Business Reputation",
       description:
         "Use Reviewbox.io to consistently get better quality Google reviews for building a better online reputation.",
-      href: "/contact",
+      href: "#reviewbox",
       badge: "Product",
     },
   ],
@@ -132,15 +132,16 @@ export const simpleServices = [
   {
     title: "Grow Business Reputation",
     description:
-      "Use Reviewbox.io to consistently get better quality Google reviews for building a better online reputation.",
+      "to consistently get better quality Google reviews for building a better online reputation.",
     icon: "/Reviewbox-logo.png",
-    iconAlt: "ReviewBox",
+    iconAlt: "Reviewbox.io logo",
+    productLink: { label: "Reviewbox.io", href: "https://reviewbox.io" },
     bullets: [
-      "Automated review requests",
-      "Customer feedback collection",
-      "Review monitoring",
-      "Reputation management tools",
-      "Simple ways to generate more positive reviews",
+      "Simple, clean review requests at the right moment",
+      "Google, Yelp, and Facebook in one simple flow",
+      "Custom review templates",
+      "Multi-location support and team management",
+      "Statistics and reputation insights",
     ],
   },
   {
@@ -282,6 +283,45 @@ export const ctaContent = {
   subtext: "Let us talk about what you are building and what comes next.",
   ctaLabel: "Contact Us",
   ctaHref: "/contact",
+};
+
+export const reviewboxContent = {
+  logoSrc: "/Reviewbox-logo.png",
+  logoAlt: "Reviewbox",
+  headlineLines: ["Better reviews.", "Less effort."],
+  subtext:
+    "helps your customers leave consistent, quality reviews on Google, Yelp, and Facebook—so your reputation keeps growing while you stay focused on the work.",
+  productLink: {
+    label: "Reviewbox",
+    href: "https://reviewbox.io",
+  },
+  bullets: [
+    "Simple, clean review requests at the right moment",
+    "Google, Yelp, and Facebook in one simple flow",
+    "Built for local businesses that care about reputation",
+  ],
+  features: [
+    "Multi-location support",
+    "Custom review templates",
+    "Statistics & insights",
+    "Team management",
+  ],
+  featuresLabel: "Also includes",
+  ctaLabel: "Sign up",
+  ctaSubtext: "Free for 30 days. No card required.",
+  ctaHref: "https://reviewbox.io",
+  desktop: {
+    imageSrc: "/rvbx-example-desktop.png",
+    imageAlt: "Reviewbox dashboard on desktop",
+  },
+  leftExample: {
+    imageSrc: "/rvbx-os-example.png",
+    imageAlt: "Reviewbox example on a business website",
+  },
+  rightMessage: {
+    imageSrc: "/rvbx-example-message-send.png",
+    imageAlt: "Reviewbox review request message on mobile",
+  },
 };
 
 export const logoBarHeading = "Companies We Work With";

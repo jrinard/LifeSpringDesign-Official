@@ -1312,6 +1312,43 @@ body {
   color: var(--muted);
 }
 
+.header-v3-mobile-menu {
+  animation: header-v3-mobile-menu-in 0.2s ease-out;
+}
+
+.header-v3-mobile-menu .header-v3-nav a,
+.header-v3-mobile-menu .header-v3-nav-link {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  padding-block: 1rem;
+  padding-inline: 1rem;
+}
+
+.header-v3-mobile-menu .header-v3-nav-bar--custom[data-nav-button-size="small"] .header-v3-nav a,
+.header-v3-mobile-menu .header-v3-nav-bar--custom[data-nav-button-size="small"] .header-v3-nav-link,
+.header-v3-mobile-menu .header-v3-nav-bar--custom[data-nav-button-size="medium"] .header-v3-nav a,
+.header-v3-mobile-menu .header-v3-nav-bar--custom[data-nav-button-size="medium"] .header-v3-nav-link,
+.header-v3-mobile-menu .header-v3-nav-bar--custom[data-nav-button-size="large"] .header-v3-nav a,
+.header-v3-mobile-menu .header-v3-nav-bar--custom[data-nav-button-size="large"] .header-v3-nav-link {
+  margin-block: 0;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  padding-block: 1rem;
+  padding-inline: 1rem;
+}
+
+@keyframes header-v3-mobile-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.35rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .header-v3-nav-bar {
   background-color: var(--header-strip-bg);
   color: var(--header-strip-fg);
@@ -1682,6 +1719,147 @@ body {
       color-mix(in srgb, var(--accent-purple) 1.5%, var(--background)) 38%,
       transparent 88%
     );
+}
+
+.reviewbox-v1-bg--preview {
+  background: none;
+}
+
+/* Reviewbox-v1 — section-scoped dark / light theme */
+.reviewbox-v1[data-reviewbox-theme="dark"] {
+  color-scheme: dark;
+  --ls-base: #030303;
+  --ls-surface: #1b1b1b;
+  --ls-blue: #0955a3;
+  --ls-blue-light: #4d82b8;
+  --background: var(--ls-base);
+  --foreground: #ffffff;
+  --muted: var(--ls-blue-light);
+  --surface: var(--ls-surface);
+  --border: rgba(255, 255, 255, 0.1);
+  --accent-blue: var(--ls-blue-light);
+  --accent-blue-dark: var(--ls-blue);
+  --accent-purple: var(--ls-blue-light);
+  --accent-purple-light: #6a9fd0;
+  --accent-purple-deep: var(--ls-blue);
+  --subtle-from: rgba(77, 130, 184, 0.1);
+  --subtle-to: rgba(77, 130, 184, 0.04);
+  --hover-overlay: rgba(255, 255, 255, 0.05);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.reviewbox-v1[data-reviewbox-theme="light"] {
+  color-scheme: light;
+  --background: #f6f5fa;
+  --foreground: #12121c;
+  --muted: #5c5c72;
+  --surface: #ffffff;
+  --border: rgba(0, 0, 0, 0.08);
+  --accent-blue: #2563eb;
+  --accent-blue-dark: #1e5799;
+  --accent-purple: #2563eb;
+  --accent-purple-light: #3b82f6;
+  --accent-purple-deep: #1e5799;
+  --subtle-from: rgba(0, 0, 0, 0.04);
+  --subtle-to: rgba(0, 0, 0, 0.02);
+  --hover-overlay: rgba(0, 0, 0, 0.04);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.reviewbox-v1[data-reviewbox-theme="light"] .reviewbox-v1-logo {
+  filter: brightness(0);
+}
+
+.reviewbox-v1--preview-colors .reviewbox-v1-title,
+.reviewbox-v1--preview-colors .reviewbox-v1-bullet {
+  color: var(--reviewbox-title-color);
+}
+
+.reviewbox-v1--preview-colors .reviewbox-v1-bullet-dot {
+  background-color: var(--reviewbox-body-color);
+}
+
+.reviewbox-v1--preview-colors .reviewbox-v1-body,
+.reviewbox-v1--preview-colors .reviewbox-v1-body-link {
+  color: var(--reviewbox-body-color);
+}
+
+.reviewbox-v1--preview-colors .reviewbox-v1-features-label {
+  color: var(--reviewbox-body-color);
+}
+
+.reviewbox-v1--preview-colors .reviewbox-v1-feature-pill {
+  color: var(--reviewbox-title-color);
+}
+
+.reviewbox-v1-cta-subtext {
+  color: #8888a0;
+}
+
+.reviewbox-v1[data-reviewbox-theme="light"] .reviewbox-v1-cta-subtext {
+  color: #6b6b80;
+}
+
+.reviewbox-v1-bg {
+  background:
+    radial-gradient(
+      ellipse 95% 85% at 50% 0%,
+      color-mix(in srgb, var(--accent-blue) 3%, transparent) 0%,
+      transparent 82%
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--foreground) 2.5%, var(--background)) 0%,
+      color-mix(in srgb, var(--accent-purple) 1.5%, var(--background)) 38%,
+      transparent 88%
+    );
+}
+
+.reviewbox-showcase-frame {
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.reviewbox-showcase:hover .reviewbox-showcase-frame {
+  box-shadow: 12px 16px 42px rgba(0, 0, 0, 0.12);
+}
+
+.reviewbox-v1[data-reviewbox-theme="dark"] .reviewbox-showcase-frame {
+  box-shadow: 10px 14px 36px rgba(0, 0, 0, 0.38);
+}
+
+.reviewbox-v1[data-reviewbox-theme="light"] .reviewbox-showcase-frame {
+  box-shadow: 10px 14px 36px rgba(0, 0, 0, 0.14);
+}
+
+.reviewbox-signup-btn {
+  border: none;
+  background-color: #f0bd4e;
+  color: #1a1a1a;
+  box-shadow: 0 10px 25px rgba(240, 189, 78, 0.28);
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.reviewbox-signup-btn:hover {
+  background-color: #d99830 !important;
+  box-shadow: 0 14px 36px rgba(240, 189, 78, 0.52) !important;
+  color: #1a1a1a !important;
+  filter: brightness(0.97);
+  transform: translateY(-2px);
+}
+
+.reviewbox-signup-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 20px rgba(240, 189, 78, 0.38);
+}
+
+.reviewbox-signup-btn:focus-visible {
+  --tw-ring-color: rgba(240, 189, 78, 0.55);
 }
 
 /* Hero-v3 — theme-aware background gradient */

@@ -8,6 +8,7 @@ import {
   defaultHeroV21BackgroundSettings,
   getHeroV21BackgroundStyle,
 } from "@/lib/hero-v21-background-preview";
+import { scrollToHashHref } from "@/lib/scroll-to-hash";
 import { cn } from "@/lib/utils";
 
 export type HeroHighlight = {
@@ -53,7 +54,15 @@ function HighlightCard({ title, description, href, badge }: HeroHighlight) {
 
   if (href) {
     return (
-      <Link href={href} className={className}>
+      <Link
+        href={href}
+        onClick={(event) => {
+          if (scrollToHashHref(href)) {
+            event.preventDefault();
+          }
+        }}
+        className={className}
+      >
         {content}
       </Link>
     );

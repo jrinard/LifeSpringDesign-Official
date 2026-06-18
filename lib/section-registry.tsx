@@ -30,6 +30,7 @@ import { ServicesV3 } from "@/components/sections/Services-v3";
 import { ServicesIconsV1 } from "@/components/sections/ServicesIcons-v1";
 import { CTAV1 } from "@/components/sections/CTA-v1";
 import { CTAV2 } from "@/components/sections/CTA-v2";
+import { ReviewboxV1 } from "@/components/sections/Reviewbox-v1";
 import { FooterV1 } from "@/components/sections/Footer-v1";
 import { FooterV2 } from "@/components/layout/Footer-v2";
 import { FooterV3 } from "@/components/layout/Footer-v3";
@@ -48,6 +49,7 @@ import {
   servicesV1Cta,
   testimonials,
   ctaContent,
+  reviewboxContent,
   logoBarHeading,
   servicesIconsHeading,
   servicesIconsSubheading,
@@ -365,6 +367,33 @@ export const sectionGroups = {
             subtext={ctaContent.subtext}
             ctaLabel={ctaContent.ctaLabel}
             ctaHref={ctaContent.ctaHref}
+          />
+        ),
+      },
+    },
+  },
+  reviewbox: {
+    label: "Reviewbox",
+    defaultVariant: "reviewbox-v1",
+    variants: {
+      "reviewbox-v1": {
+        label: "Reviewbox-v1",
+        render: () => (
+          <ReviewboxV1
+            logoSrc={reviewboxContent.logoSrc}
+            logoAlt={reviewboxContent.logoAlt}
+            headlineLines={reviewboxContent.headlineLines}
+            subtext={reviewboxContent.subtext}
+            productLink={reviewboxContent.productLink}
+            bullets={reviewboxContent.bullets}
+            features={reviewboxContent.features}
+            featuresLabel={reviewboxContent.featuresLabel}
+            ctaLabel={reviewboxContent.ctaLabel}
+            ctaSubtext={reviewboxContent.ctaSubtext}
+            ctaHref={reviewboxContent.ctaHref}
+            desktop={reviewboxContent.desktop}
+            leftExample={reviewboxContent.leftExample}
+            rightMessage={reviewboxContent.rightMessage}
           />
         ),
       },

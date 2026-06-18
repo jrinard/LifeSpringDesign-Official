@@ -4,6 +4,7 @@ import { HeroV21PreviewProvider } from "@/components/dev/HeroV21PreviewContext";
 import { HeaderV3PreviewProvider } from "@/components/dev/HeaderV3PreviewContext";
 import { PortfolioPreviewProvider } from "@/components/dev/PortfolioPreviewContext";
 import { FooterV3PreviewProvider } from "@/components/dev/FooterV3PreviewContext";
+import { ReviewboxPreviewProvider } from "@/components/dev/ReviewboxPreviewContext";
 import { ServicesV1LayoutProvider } from "@/components/dev/ServicesV1LayoutContext";
 import { SpacerStripePreviewProvider } from "@/components/dev/SpacerStripePreviewContext";
 import {
@@ -46,6 +47,10 @@ export function SectionPreview({ group, variant }: SectionPreviewProps) {
 
   if (group === "footer" && variantId === "footer-v3") {
     return <FooterV3PreviewProvider>{content}</FooterV3PreviewProvider>;
+  }
+
+  if (group === "reviewbox" && variantId === "reviewbox-v1") {
+    return <ReviewboxPreviewProvider>{content}</ReviewboxPreviewProvider>;
   }
 
   return content;
