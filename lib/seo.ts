@@ -21,7 +21,7 @@ export function createMetadata({
   ogImageAlt,
 }: PageSEO = {}): Metadata {
   const pageTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
-  const pageDescription = description ?? siteConfig.description;
+  const pageDescription = description ?? (siteConfig.description || siteConfig.tagline);
   const url = `${siteConfig.url}${path}`;
   const imageAlt = ogImageAlt ?? siteConfig.name;
 

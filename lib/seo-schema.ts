@@ -7,6 +7,10 @@ function phoneDigits(phone: string): string {
   return phone.replace(/\D/g, "");
 }
 
+function siteDescription(): string {
+  return siteConfig.description || siteConfig.tagline;
+}
+
 export function buildOrganizationSchema(): JsonLd {
   const sameAs = getSocialProfileUrls();
 
@@ -15,7 +19,7 @@ export function buildOrganizationSchema(): JsonLd {
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.url,
-    description: siteConfig.description,
+    description: siteDescription(),
     ...(siteConfig.email && { email: siteConfig.email }),
     ...(siteConfig.phone && { telephone: siteConfig.phone }),
     ...(siteConfig.address.length > 0 && {
@@ -85,7 +89,7 @@ export function buildWebSiteSchema(): JsonLd {
     "@type": "WebSite",
     name: siteConfig.name,
     url: siteConfig.url,
-    description: siteConfig.description,
+    description: siteDescription(),
     publisher: {
       "@type": "Organization",
       name: siteConfig.name,

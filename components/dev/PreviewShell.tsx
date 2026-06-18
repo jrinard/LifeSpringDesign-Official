@@ -6,15 +6,16 @@ import { CreativeProvider } from "@/components/dev/CreativeProvider";
 
 type PreviewShellProps = {
   children: ReactNode;
+  showControls?: boolean;
 };
 
 /**
- * Wraps preview routes with the internal creative toolbar and theme context.
+ * Wraps preview routes with theme context. Control panel is playground-only.
  */
-export function PreviewShell({ children }: PreviewShellProps) {
+export function PreviewShell({ children, showControls = false }: PreviewShellProps) {
   return (
     <CreativeProvider>
-      <CreativeBar />
+      {showControls && <CreativeBar />}
       {children}
     </CreativeProvider>
   );

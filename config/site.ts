@@ -8,11 +8,11 @@ export const siteConfig = {
   name: "LifeSpring Design",
   domain: "lifespringdesign.com",
   url: "https://lifespringdesign.com",
-  tagline: "Crafting digital experiences that help businesses grow.",
-  description:
-    "LifeSpring Design builds fast, beautiful marketing websites for businesses ready to grow.",
-  phone: "503-555-0100",
-  email: "hello@lifespringdesign.com",
+  tagline: "Crafting digital experiences that help you grow.",
+  description: "",
+  phone: "208-316-8338",
+  serviceArea: "Serving Washington, Oregon, Idaho",
+  email: "josh@lifespringdesign.com",
   address: "",
   /** Optional contacts shown on the under construction page. Falls back to site phone/email when empty. */
   teamContacts: [] as TeamContact[],
@@ -28,6 +28,7 @@ export const siteConfig = {
     linkedin: "#",
     twitter: "#",
   },
+  /** Full site nav — dev/scaffold footers and legacy layouts */
   nav: [
     { label: "Home", href: "/" },
     { label: "Playground", href: "/playground" },
@@ -37,10 +38,19 @@ export const siteConfig = {
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ],
+  /** Primary marketing nav — header v3, footer v3 */
+  primaryNav: [
+    { label: "Home", href: "/" },
+    { label: "Services", href: "#services" },
+    { label: "Projects", href: "#portfolio" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ],
   assets: {
     logo: "/logo.png",
     logoWhite: "/LS-logo-white.png",
     logoBlack: "/LS-logo-black.png",
+    logoColor: "/LS_Logo_Color.png",
     ogImage: "/ls-logo-color.png",
   },
   launch: {

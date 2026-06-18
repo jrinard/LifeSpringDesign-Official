@@ -1,8 +1,17 @@
-import type { ReactNode } from "react";
+"use client";
+
+import type { CSSProperties, ReactNode } from "react";
 import Link from "next/link";
+import { useFooterV3Preview } from "@/components/dev/FooterV3PreviewContext";
 import { siteConfig } from "@/config/site";
-import { BrandLogo } from "@/components/ui/BrandLogo";
+import { FooterBrand } from "@/components/ui/FooterBrand";
 import { Container } from "@/components/ui/Container";
+import {
+  defaultFooterV3PreviewSettings,
+  getFooterV3ContainerClassName,
+} from "@/lib/footer-v3-preview";
+import { scrollToHashHref } from "@/lib/scroll-to-hash";
+import { cn } from "@/lib/utils";
 
 type SocialItem = {
   label: string;
@@ -26,27 +35,9 @@ function InstagramIcon() {
   );
 }
 
-function LinkedInIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-    </svg>
-  );
-}
-
-function TwitterIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-    </svg>
-  );
-}
-
 const socialLinks: SocialItem[] = [
   { label: "Facebook", href: siteConfig.social.facebook, icon: <FacebookIcon /> },
   { label: "Instagram", href: siteConfig.social.instagram, icon: <InstagramIcon /> },
-  { label: "LinkedIn", href: siteConfig.social.linkedin, icon: <LinkedInIcon /> },
-  { label: "X", href: siteConfig.social.twitter, icon: <TwitterIcon /> },
 ];
 
 type FooterV3Props = {
@@ -59,25 +50,46 @@ type FooterV3Props = {
 export function FooterV3({ description }: FooterV3Props) {
   const year = new Date().getFullYear();
   const activeSocial = socialLinks.filter((link) => link.href);
+  const preview = useFooterV3Preview();
+  const hasPreviewColors = Boolean(preview);
+  const layoutWidth =
+    preview?.settings.layoutWidth ?? defaultFooterV3PreviewSettings.layoutWidth;
+  const footerTheme = preview?.settings.theme ?? defaultFooterV3PreviewSettings.theme;
+  const hasPreviewTheme = Boolean(preview);
+
+  const previewStyle = preview
+    ? ({
+        "--footer-v3-copyright-color": preview.settings.copyrightColor,
+        "--footer-v3-domain-color": preview.settings.domainColor,
+        "--footer-v3-social-color": preview.settings.socialColor,
+        "--footer-v3-social-hover-color": preview.settings.socialHoverColor,
+      } as CSSProperties)
+    : undefined;
 
   return (
-    <footer className="relative mt-16">
+    <footer
+      className={cn("footer-v3 relative mt-16", hasPreviewColors && "footer-v3--preview-colors")}
+      style={previewStyle}
+      {...(hasPreviewTheme && { "data-footer-v3-theme": footerTheme })}
+    >
       <div
         className="pointer-events-none absolute -top-8 left-1/2 h-16 w-[120%] -translate-x-1/2 rounded-[50%] bg-accent-purple-deep/10 blur-2xl"
         aria-hidden="true"
       />
 
-      <div className="relative overflow-hidden rounded-t-[2.5rem] border border-b-0 border-accent-purple/15 bg-footer-surface">
+      <div className="footer-v3-surface relative overflow-hidden rounded-t-[2.5rem] border border-b-0 border-accent-purple/15 bg-footer-surface">
         <div
           className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-purple/40 to-transparent"
           aria-hidden="true"
         />
 
-        <Container className="py-14 lg:py-20">
+        <Container
+          className={cn("py-14 lg:py-20", getFooterV3ContainerClassName(layoutWidth))}
+        >
           <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
             <div className="max-w-md">
               <Link href="/" className="inline-block">
-                <BrandLogo className="h-12" width={180} height={62} />
+                <FooterBrand priority width={180} height={62} />
               </Link>
               <p className="mt-6 text-lg leading-relaxed text-foreground">
                 {siteConfig.tagline}
@@ -91,18 +103,13 @@ export function FooterV3({ description }: FooterV3Props) {
               <p className="font-mono text-xs tracking-widest text-accent-purple uppercase">
                 Start a project
               </p>
-              {siteConfig.email && (
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="font-serif text-2xl text-foreground transition-colors hover:text-accent-purple sm:text-3xl"
-                >
-                  {siteConfig.email}
-                </a>
+              {siteConfig.serviceArea && (
+                <p className="footer-v3-service-area text-sm sm:text-base">{siteConfig.serviceArea}</p>
               )}
               {siteConfig.phone && (
                 <a
-                  href={`tel:${siteConfig.phone}`}
-                  className="text-sm text-muted transition-colors hover:text-foreground"
+                  href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}
+                  className="footer-v3-phone font-serif text-2xl transition-colors sm:text-3xl"
                 >
                   {siteConfig.phone}
                 </a>
@@ -111,17 +118,22 @@ export function FooterV3({ description }: FooterV3Props) {
                 href="/contact"
                 className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-accent-purple transition-colors hover:text-accent-purple-light"
               >
-                Contact form
+                Contact us
                 <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>
 
           <div className="mt-14 flex flex-wrap gap-2">
-            {siteConfig.nav.map((item) => (
+            {siteConfig.primaryNav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={(event) => {
+                  if (scrollToHashHref(item.href)) {
+                    event.preventDefault();
+                  }
+                }}
                 className="rounded-full border border-border bg-surface/40 px-4 py-2 text-sm text-muted transition-colors hover:border-accent-purple/30 hover:text-foreground"
               >
                 {item.label}
@@ -130,11 +142,18 @@ export function FooterV3({ description }: FooterV3Props) {
           </div>
 
           <div className="mt-14 flex flex-col gap-6 border-t border-border/60 pt-8 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex flex-col gap-1 text-sm text-muted">
-              <p>
+            <div className="flex flex-col gap-1 text-sm">
+              <p className={cn("footer-v3-copyright", !hasPreviewColors && "text-muted")}>
                 &copy; {year} {siteConfig.name}
               </p>
-              <p className="font-mono text-xs tracking-wide">{siteConfig.domain}</p>
+              <p
+                className={cn(
+                  "footer-v3-domain font-mono text-xs tracking-wide",
+                  !hasPreviewColors && "text-muted",
+                )}
+              >
+                {siteConfig.domain}
+              </p>
             </div>
 
             {activeSocial.length > 0 && (
@@ -146,7 +165,10 @@ export function FooterV3({ description }: FooterV3Props) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={link.label}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-accent-purple/40 hover:text-accent-purple"
+                    className={cn(
+                      "footer-v3-social flex h-10 w-10 items-center justify-center rounded-full border border-border transition-colors hover:border-accent-purple/40",
+                      !hasPreviewColors && "text-muted hover:text-accent-purple",
+                    )}
                   >
                     {link.icon}
                   </a>

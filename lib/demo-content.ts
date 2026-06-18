@@ -4,15 +4,53 @@ export const heroDemo = {
   headline: siteConfig.name,
   lines: ["Expert", "Design", "Partners"],
   subtext: "Grow your business. Reach your goals. Enjoy the process.",
-  ctaLabel: "Start a Conversation",
+  ctaLabel: "Let's Talk",
   ctaHref: "/contact",
 };
 
+export const heroV21Demo = {
+  headlineLines: ["Technology That Works", "The Way Your Business Works"],
+  subtext:
+    "Custom websites, software, and digital solutions that solve real business problems so you can focus on what you do best.",
+  ctaLabel: "Let's Talk",
+  ctaHref: "/contact",
+  highlights: [
+    {
+      title: "Web Design and Development",
+      description: "Fast, polished sites built around how you actually work.",
+      href: "/services",
+    },
+    {
+      title: "Grow Business Reputation",
+      description:
+        "Use Reviewbox.io to consistently get better quality Google reviews for building a better online reputation.",
+      href: "/contact",
+      badge: "Product",
+    },
+  ],
+};
+
 export const projects = [
-  { title: "Riverside Bistro", tags: "Branding, Website Design, Menu Design" },
-  { title: "Summit Legal Group", tags: "Website Design, SEO, Content" },
-  { title: "Valley Health Co-op", tags: "Branding, Website Design" },
-  { title: "Bright Path Learning", tags: "Website Design, Graphic Design" },
+  {
+    title: "OS Power and Softwash",
+    tags: "Website Design, Pressure Washing",
+    href: "https://ospnwcleanpros.com/",
+    imageSrc: "/ospower-example.png",
+    imageAlt: "OS Pressure/Soft Washing website",
+  },
+  {
+    title: "Phonefixation",
+    tags: "Website Design, Mobile Repair",
+    imageSrc: "/PhoneFix-example.png",
+    imageAlt: "Phonefixation website design by LifeSpring Design",
+  },
+  {
+    title: "Genesis Feed Products",
+    tags: "Website Design, Organic Agriculture",
+    href: "https://genesisfeedproducts.com/",
+    imageSrc: "/gfp-example.png",
+    imageAlt: "Genesis Feed Products website",
+  },
 ];
 
 export const featureTiles = [
@@ -63,23 +101,82 @@ export const testimonials = [
   },
 ];
 
+/** LifeSpring services — used by Services-v1 and future service sections */
 export const simpleServices = [
   {
-    title: "Web Design",
-    description: "Beautiful, responsive websites tailored to your brand.",
-    icon: "🎨",
+    title: "Websites That Represent Your Business",
+    description:
+      "Websites designed to attract customers, build trust, and represent your business online.",
+    icon: "/demo-icon-square-green.png",
+    bullets: [
+      "Custom website design",
+      "Mobile-friendly development",
+      "Hosting and maintenance",
+      "Security updates",
+      "Ongoing improvements",
+    ],
   },
   {
-    title: "Development",
-    description: "Fast, modern sites built with Next.js and best practices.",
-    icon: "⚡",
+    title: "Custom Software Built Around Your Workflow",
+    description:
+      "Stop adapting your business to software. We build tools that fit the way you already work.",
+    icon: "/demo-icon-settings_silver.png",
+    bullets: [
+      "Internal business applications",
+      "Customer portals",
+      "Custom dashboards",
+      "Workflow tools",
+      "Business process solutions",
+    ],
   },
   {
-    title: "SEO",
-    description: "Search-optimized architecture from day one.",
-    icon: "🔍",
+    title: "Grow Business Reputation",
+    description:
+      "Use Reviewbox.io to consistently get better quality Google reviews for building a better online reputation.",
+    icon: "/Reviewbox-logo.png",
+    iconAlt: "ReviewBox",
+    bullets: [
+      "Automated review requests",
+      "Customer feedback collection",
+      "Review monitoring",
+      "Reputation management tools",
+      "Simple ways to generate more positive reviews",
+    ],
+  },
+  {
+    title: "Graphic Design & Brand Support",
+    description:
+      "Professional designs that help your business stand out and create a consistent brand.",
+    icon: "/demo-icon-yellow-diamond.png",
+    bullets: [
+      "Logos and branding materials",
+      "Business cards and print materials",
+      "Social media graphics",
+      "Marketing materials",
+      "Custom digital designs",
+    ],
+  },
+  {
+    title: "Ongoing Technology Support",
+    description:
+      "Your business changes over time. We help your technology evolve with it through ongoing updates, improvements, and support.",
+    icon: "/demo-icon-white-check.png",
+    bullets: [
+      "Website updates",
+      "Software improvements",
+      "Security maintenance",
+      "Feature enhancements",
+      "Ongoing technical support",
+    ],
   },
 ];
+
+export const servicesV1Cta = {
+  headline: "Great businesses need a trusted partner behind it.",
+  text: "We can help you.",
+  ctaLabel: "Let's Go",
+  ctaHref: heroDemo.ctaHref,
+};
 
 export const iconServices = [
   {
