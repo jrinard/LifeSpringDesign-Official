@@ -48,7 +48,7 @@ Swap LifeSpring placeholders for `[CUSTOMER]`:
 - `phone`, `email`, `address`
 - `nav` — can stay minimal for now; Playground/Preview are dev-only
 - `social` — real URLs when ready (optional for soft launch)
-- `assets.logo` — client logo on under construction page (`public/logo.png` or path you set)
+- `assets.logo` — client logo on under construction page (`public/[client-slug]/logo.png` or path you set)
 - `assets.ogImage` — optional for soft launch; add before full launch
 
 **2. `lib/seo-content.ts` — homepage (under construction)**
@@ -61,7 +61,7 @@ Update `pageSeo.home` for `[CUSTOMER]`:
 
 **3. `public/`**
 
-- Drop client logo at the path used by `config/site.ts` `assets.logo` (default `/logo.png`)
+- Drop client logo at the path used by `config/site.ts` `assets.logo` (e.g. `/lsd/logo.png` on the official site, or `/your-slug/logo.png` on a client clone)
 
 **4. `package.json`** (optional)
 
@@ -271,7 +271,7 @@ Update copy and `createMetadata()` in each:
 config/site.ts              ← business identity + launch.mode switch (under-construction | live)
 lib/homepage-config.json    ← published section stack (written by Publish to /)
 lib/seo-content.ts          ← pageSeo.home first, then other routes
-public/logo.png             ← under construction logo (soft launch)
+public/lsd/                 ← LifeSpring assets (logos, portfolio, section icons); trade demo stays in public/osp/
 app/page.tsx                ← reads launch.mode; do not edit manually for go-live
 lib/color-themes.ts         ← default theme for /playground
 lib/demo-content.ts         ← section copy (Phase 3+)

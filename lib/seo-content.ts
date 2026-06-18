@@ -36,7 +36,7 @@ export const pageSeo = {
   playground: {
     title: "Playground",
     description:
-      "Internal preview of the LifeSpring Starter section library, color themes, and OSP-style trade services layout.",
+      "Internal section builder for LifeSpring Design — themes, layouts, and homepage preview.",
     path: "/playground",
     noIndex: true,
   },
@@ -49,22 +49,19 @@ export const pageSeo = {
   },
 } as const;
 
-/** Trade-services demo copy for playground JSON-LD and hero metadata. */
+/** Agency demo copy for playground JSON-LD and trade-style section metadata. */
 export const tradeDemoSeo = {
-  headline: "Professional Pressure & Soft Washing in Vancouver & Portland",
-  leadText: "Servicing Vancouver, Portland and surrounding areas",
-  description:
-    "Residential and commercial pressure washing, soft washing, roof cleaning, and organic growth management in Vancouver WA and Portland OR.",
-  areaServed: ["Vancouver, WA", "Portland, OR", "Camas, WA", "Clark County, WA"],
+  headline: "Custom Websites & Software for Northwest Businesses",
+  leadText: siteConfig.serviceArea,
+  description: siteConfig.description,
+  areaServed: ["Washington", "Oregon", "Idaho"],
   serviceTypes: [
-    "Pressure Washing",
-    "Soft Washing",
-    "Roof Cleaning",
-    "House Washing",
-    "Concrete Cleaning",
-    "Commercial Exterior Cleaning",
-    "Organic Growth Management",
-    "Gutter Cleaning",
+    "Website Design",
+    "Custom Software Development",
+    "Review Management Software",
+    "Branding & Graphic Design",
+    "SEO & Digital Marketing",
+    "Ongoing Technology Support",
   ],
 } as const;
 
