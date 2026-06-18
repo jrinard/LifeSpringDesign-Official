@@ -58,7 +58,7 @@ export function PortfolioV1({
   const preview = usePortfolioPreview();
   const theme = preview?.settings.theme ?? defaultPortfolioPreviewSettings.theme;
   const [activeTab, setActiveTab] = useState<PortfolioTab>("web");
-  const scrollRef = useRef<HTMLUListElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const dragState = useRef({ active: false, startX: 0, scrollLeft: 0, moved: false });
   const userInteractedRef = useRef(false);
   const isAutoScrollingRef = useRef(false);
@@ -154,7 +154,7 @@ export function PortfolioV1({
     });
   };
 
-  const handlePointerDown = (event: PointerEvent<HTMLUListElement>) => {
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
     stopAutoScroll();
 
     if (event.pointerType !== "mouse" || event.button !== 0) return;
@@ -172,7 +172,7 @@ export function PortfolioV1({
     track.classList.add("is-dragging");
   };
 
-  const handlePointerMove = (event: PointerEvent<HTMLUListElement>) => {
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
     if (!dragState.current.active) return;
 
     const track = scrollRef.current;
@@ -184,7 +184,7 @@ export function PortfolioV1({
     track.scrollLeft = dragState.current.scrollLeft - delta;
   };
 
-  const endDrag = (event: PointerEvent<HTMLUListElement>) => {
+  const endDrag = (event: PointerEvent<HTMLDivElement>) => {
     if (!dragState.current.active) return;
 
     dragState.current.active = false;
@@ -192,7 +192,7 @@ export function PortfolioV1({
     scrollRef.current?.classList.remove("is-dragging");
   };
 
-  const handleClickCapture = (event: MouseEvent<HTMLUListElement>) => {
+  const handleClickCapture = (event: MouseEvent<HTMLDivElement>) => {
     if (!dragState.current.moved) return;
 
     event.preventDefault();
@@ -258,12 +258,12 @@ export function PortfolioV1({
             <PortfolioNavIcon direction="left" />
           </button>
 
-          <ul
+          <div
             ref={scrollRef}
-            className="portfolio-v1-scroll m-0 min-w-0 flex-1 list-none flex overflow-x-auto scroll-smooth p-0 pb-4 snap-x snap-mandatory"
+            className="portfolio-v1-scroll min-w-0 flex-1 flex overflow-x-auto scroll-smooth pb-4 snap-x snap-mandatory"
             data-portfolio-tab={activeTab}
             tabIndex={0}
-            role="list"
+            role="region"
             aria-label={activeTab === "web" ? "Web design and development projects" : "Branding and graphic design projects"}
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
@@ -276,11 +276,8 @@ export function PortfolioV1({
             onKeyDown={stopAutoScroll}
           >
             {activeProjects.map((project, index) => (
-              <li
-                key={`${activeTab}-${project.title}`}
-                className="list-none"
-              >
               <article
+                key={`${activeTab}-${project.title}`}
                 className={
                   activeTab === "branding"
                     ? "portfolio-v1-card portfolio-v1-card--branding group shrink-0 snap-start rounded-xl border-2 border-border bg-surface/50 transition-[border-color,box-shadow] hover:border-accent-blue/40"
@@ -345,9 +342,8 @@ export function PortfolioV1({
                   </div>
                 )}
               </article>
-              </li>
             ))}
-          </ul>
+          </div>
 
           <button
             type="button"
