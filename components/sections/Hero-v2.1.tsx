@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useContactModal } from "@/components/contact/ContactModalContext";
 import { useHeroV21Preview } from "@/components/dev/HeroV21PreviewContext";
 import { Container } from "@/components/ui/Container";
 import { PreviewButton } from "@/components/ui/PreviewButton";
@@ -8,6 +10,7 @@ import {
   defaultHeroV21BackgroundSettings,
   getHeroV21BackgroundStyle,
 } from "@/lib/hero-v21-background-preview";
+import { isContactHref } from "@/lib/contact-modal";
 import { scrollToHashHref } from "@/lib/scroll-to-hash";
 import { cn } from "@/lib/utils";
 
@@ -20,11 +23,52 @@ export type HeroHighlight = {
 type HeroV21Props = {
   /** Multi-line headline — each entry renders as a block line */
   headlineLines: string[];
-  subtext: string;
+  /** Rotating subtext lines — cycles when more than one is provided */
+  subtextLines: string[];
   highlights: HeroHighlight[];
   ctaLabel?: string;
   ctaHref?: string;
 };
+
+const SUBTEXT_HOLD_MS = 5000;
+
+function RotatingSubtext({ lines }: { lines: string[] }) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (lines.length <= 1) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    const interval = setInterval(() => {
+      setIndex((current) => (current + 1) % lines.length);
+    }, SUBTEXT_HOLD_MS);
+
+    return () => clearInterval(interval);
+  }, [lines]);
+
+  return (
+    <p
+      className="hero-v21-subtext mt-6 text-lg leading-relaxed text-muted"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      {lines.map((line, lineIndex) => (
+        <span
+          key={line}
+          aria-hidden={lineIndex !== index}
+          className={cn(
+            "hero-v21-subtext-line block ease-in-out",
+            lineIndex === index ? "relative z-10 opacity-100" : "absolute inset-x-0 top-0 opacity-0",
+          )}
+        >
+          {line}
+        </span>
+      ))}
+    </p>
+  );
+}
 
 function HighlightCard({ title, description, href }: HeroHighlight) {
   const content = (
@@ -33,7 +77,7 @@ function HighlightCard({ title, description, href }: HeroHighlight) {
       <p className="mt-2 text-sm leading-relaxed text-muted sm:text-base">{description}</p>
       {href && (
         <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent-blue transition-colors group-hover:text-accent-blue-dark">
-          Learn more
+          Learn More
           <span aria-hidden="true">→</span>
         </span>
       )}
@@ -68,12 +112,13 @@ function HighlightCard({ title, description, href }: HeroHighlight) {
  */
 export function HeroV21({
   headlineLines,
-  subtext,
+  subtextLines,
   highlights,
   ctaLabel,
   ctaHref,
 }: HeroV21Props) {
   const preview = useHeroV21Preview();
+  const modal = useContactModal();
   const backgroundSettings = preview?.settings.background ?? defaultHeroV21BackgroundSettings;
   const backgroundStyle = preview ? getHeroV21BackgroundStyle(backgroundSettings) : undefined;
 
@@ -100,10 +145,19 @@ export function HeroV21({
               </span>
             ))}
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-muted">{subtext}</p>
+          <RotatingSubtext lines={subtextLines} />
           {ctaLabel && ctaHref && (
             <div className="mt-8">
-              <a href={ctaHref} aria-label={`${ctaLabel} — contact LifeSpring Design`}>
+              <a
+                href={ctaHref}
+                aria-label={`${ctaLabel} — contact LifeSpring Design`}
+                onClick={(event) => {
+                  if (modal && isContactHref(ctaHref)) {
+                    event.preventDefault();
+                    modal.openContact();
+                  }
+                }}
+              >
                 <PreviewButton>{ctaLabel}</PreviewButton>
               </a>
             </div>

@@ -24,7 +24,7 @@ export const siteConfig = {
     brandTitleLines: undefined as string[] | undefined,
   },
   social: {
-    facebook: "#",
+    facebook: "https://www.facebook.com/lifespringdesign/",
     instagram: "#",
     linkedin: "#",
     twitter: "#",

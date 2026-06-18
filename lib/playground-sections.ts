@@ -21,6 +21,7 @@ export const defaultPlaygroundSections: PlaygroundSectionConfig[] = [
   { group: "portfolio", preview: false },
   { group: "testimonials", defaultVariant: "testimonials-v3", preview: false },
   { group: "cta", preview: false },
+  { group: "contact", defaultVariant: "contact-v1", preview: false },
   { group: "footer", defaultVariant: "footer-v4", preview: false },
 ];
 

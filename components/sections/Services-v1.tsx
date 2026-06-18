@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import { useContactNavigation } from "@/lib/use-contact-navigation";
 import type { PreviewGradientDirection } from "@/lib/preview-gradient";
 import { getPreviewGradientBackground } from "@/lib/preview-gradient";
 import {
@@ -108,6 +111,7 @@ export function ServicesV1({
   layoutWidth = defaultServicesV1LayoutWidth,
   background,
 }: ServicesV1Props) {
+  const navigateContact = useContactNavigation();
   const sectionStyle = background
     ? {
         background: getPreviewGradientBackground(
@@ -201,7 +205,11 @@ export function ServicesV1({
                 {cta.headline}
               </h3>
               <p className="mt-3 text-lg leading-relaxed text-muted sm:text-xl lg:text-2xl">{cta.text}</p>
-              <Link href={cta.ctaHref} className="mt-6 normal-case">
+              <Link
+                href={cta.ctaHref}
+                className="mt-6 normal-case"
+                onClick={(event) => navigateContact(cta.ctaHref, event)}
+              >
                 <Button size="lg">{cta.ctaLabel}</Button>
               </Link>
             </div>

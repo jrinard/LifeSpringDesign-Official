@@ -1873,6 +1873,21 @@ body {
   background: none;
 }
 
+.hero-v21-subtext {
+  position: relative;
+  min-height: 5.5rem;
+}
+
+.hero-v21-subtext-line {
+  transition: opacity 800ms ease-in-out;
+}
+
+@media (min-width: 640px) {
+  .hero-v21-subtext {
+    min-height: 4.75rem;
+  }
+}
+
 /* Hero-v2.1 — top-down wash extending through most of the section */
 .hero-v21-bg {
   background:
@@ -2005,25 +2020,19 @@ body {
   border: none;
   background-color: #f0bd4e;
   color: #1a1a1a;
-  box-shadow: 0 10px 25px rgba(240, 189, 78, 0.28);
-  transition:
-    background-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease,
-    filter 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .reviewbox-signup-btn:hover {
   background-color: #d99830 !important;
-  box-shadow: 0 14px 36px rgba(240, 189, 78, 0.52) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14) !important;
   color: #1a1a1a !important;
-  filter: brightness(0.97);
-  transform: translateY(-2px);
 }
 
 .reviewbox-signup-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 8px 20px rgba(240, 189, 78, 0.38);
+  background-color: #c88828 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
 .reviewbox-signup-btn:focus-visible {
@@ -2967,5 +2976,79 @@ body {
 
   .footer-washing-hours-mobile .footer-washing-heading {
     margin-top: 0;
+  }
+}
+
+/* Contact card + modal */
+.contact-card-title {
+  color: var(--contact-title-color, #ffffff);
+}
+
+.contact-card-body {
+  color: var(--contact-body-color, #a8a8b8);
+}
+
+.contact-card-form label {
+  color: color-mix(in srgb, var(--contact-title-color, #ffffff) 88%, transparent);
+}
+
+.contact-card-form input,
+.contact-card-form textarea {
+  border-color: color-mix(in srgb, var(--contact-title-color, #ffffff) 18%, transparent);
+  background-color: color-mix(in srgb, var(--contact-title-color, #ffffff) 6%, transparent);
+  color: var(--contact-title-color, #ffffff);
+}
+
+.contact-card-form input::placeholder,
+.contact-card-form textarea::placeholder {
+  color: color-mix(in srgb, var(--contact-body-color, #a8a8b8) 85%, transparent);
+}
+
+.contact-card-form input:focus,
+.contact-card-form textarea:focus {
+  border-color: color-mix(in srgb, var(--accent-blue) 55%, transparent);
+  --tw-ring-color: color-mix(in srgb, var(--accent-blue) 25%, transparent);
+}
+
+.contact-card-form .text-accent-green-light {
+  color: #86efac;
+}
+
+.contact-card-form .text-red-400 {
+  color: #fca5a5;
+}
+
+.contact-card-form .contact-form-recaptcha,
+.contact-card-form .contact-form-recaptcha a {
+  color: color-mix(in srgb, var(--contact-body-color, #a8a8b8) 92%, transparent);
+}
+
+.contact-card-form .contact-form-recaptcha a:hover {
+  color: var(--contact-title-color, #ffffff);
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+.contact-modal-panel {
+  animation: contact-modal-in 0.22s ease-out;
+}
+
+@keyframes contact-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-modal-panel {
+    animation: none;
   }
 }

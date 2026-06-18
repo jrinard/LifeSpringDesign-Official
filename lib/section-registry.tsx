@@ -30,6 +30,7 @@ import { ServicesV3 } from "@/components/sections/Services-v3";
 import { ServicesIconsV1 } from "@/components/sections/ServicesIcons-v1";
 import { CTAV1 } from "@/components/sections/CTA-v1";
 import { CTAV2 } from "@/components/sections/CTA-v2";
+import { ContactV1 } from "@/components/sections/Contact-v1";
 import { ReviewboxV1 } from "@/components/sections/Reviewbox-v1";
 import { FooterV1 } from "@/components/sections/Footer-v1";
 import { FooterV2 } from "@/components/layout/Footer-v2";
@@ -50,6 +51,7 @@ import {
   servicesV1Cta,
   testimonials,
   ctaContent,
+  contactContent,
   reviewboxContent,
   logoBarHeading,
   servicesIconsHeading,
@@ -126,7 +128,7 @@ export const sectionGroups = {
         render: () => (
           <HeroV21
             headlineLines={heroV21Demo.headlineLines}
-            subtext={heroV21Demo.subtext}
+            subtextLines={heroV21Demo.subtextLines}
             highlights={heroV21Demo.highlights}
             ctaLabel={heroV21Demo.ctaLabel}
             ctaHref={heroV21Demo.ctaHref}
@@ -397,6 +399,25 @@ export const sectionGroups = {
             desktop={reviewboxContent.desktop}
             leftExample={reviewboxContent.leftExample}
             rightMessage={reviewboxContent.rightMessage}
+          />
+        ),
+      },
+    },
+  },
+  contact: {
+    label: "Contact",
+    defaultVariant: "contact-v1",
+    variants: {
+      "contact-v1": {
+        label: "Contact-v1",
+        render: () => (
+          <ContactV1
+            title={contactContent.title}
+            subtext={contactContent.subtext}
+            phonePrefix={contactContent.phonePrefix}
+            phone={siteConfig.phone}
+            formDivider={contactContent.formDivider}
+            formIntro={contactContent.formIntro}
           />
         ),
       },

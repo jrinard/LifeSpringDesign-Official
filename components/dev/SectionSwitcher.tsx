@@ -25,6 +25,9 @@ import {
   ReviewboxBackgroundControls,
 } from "@/components/dev/ReviewboxPreviewContext";
 import {
+  ContactV1PreviewControls,
+} from "@/components/dev/ContactV1PreviewContext";
+import {
   SpacerStripePreviewProvider,
   SpacerStripePreviewControls,
   SpacerGradientPreviewControls,
@@ -69,8 +72,10 @@ export function SectionSwitcher({
   const isPortfolioV1 = group === "portfolio" && activeVariantId === "portfolio-v1";
   const isFooterV3 = group === "footer" && activeVariantId === "footer-v3";
   const isReviewboxV1 = group === "reviewbox" && activeVariantId === "reviewbox-v1";
+  const isContactV1 = group === "contact" && activeVariantId === "contact-v1";
   const usesButtonPreview = isHeaderV3 || isHeroV21;
-  const usesExtraControls = usesButtonPreview || isPortfolioV1 || isFooterV3 || isReviewboxV1;
+  const usesExtraControls =
+    usesButtonPreview || isPortfolioV1 || isFooterV3 || isReviewboxV1 || isContactV1;
 
   const switcher = (
     <div
@@ -126,6 +131,7 @@ export function SectionSwitcher({
         {isPortfolioV1 && <PortfolioPreviewControls />}
         {isFooterV3 && <FooterV3PreviewControls />}
         {isReviewboxV1 && <ReviewboxBackgroundControls />}
+        {isContactV1 && <ContactV1PreviewControls />}
         {extraControls?.(activeVariantId)}
       </label>
       {activeVariant.render()}

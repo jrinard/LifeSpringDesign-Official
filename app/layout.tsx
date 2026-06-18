@@ -8,6 +8,7 @@ import {
   Source_Sans_3,
   Source_Serif_4,
 } from "next/font/google";
+import { RecaptchaProvider } from "@/components/forms/RecaptchaProvider";
 import { SiteJsonLd } from "@/components/seo/JsonLd";
 import { createMetadata } from "@/lib/seo";
 import { pageSeo } from "@/lib/seo-content";
@@ -70,7 +71,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <SiteJsonLd />
-        {children}
+        <RecaptchaProvider>{children}</RecaptchaProvider>
       </body>
     </html>
   );

@@ -3,6 +3,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import Link from "next/link";
 import { useFooterV3Preview } from "@/components/dev/FooterV3PreviewContext";
+import { useContactModal } from "@/components/contact/ContactModalContext";
 import { siteConfig } from "@/config/site";
 import { FooterBrand } from "@/components/ui/FooterBrand";
 import { Container } from "@/components/ui/Container";
@@ -10,6 +11,7 @@ import {
   defaultFooterV3PreviewSettings,
   getFooterV3ContainerClassName,
 } from "@/lib/footer-v3-preview";
+import { isContactHref } from "@/lib/contact-modal";
 import { scrollToHashHref } from "@/lib/scroll-to-hash";
 import { cn } from "@/lib/utils";
 
@@ -42,6 +44,7 @@ export function FooterV3({ description }: FooterV3Props) {
   const year = new Date().getFullYear();
   const activeSocial = socialLinks.filter((link) => link.href);
   const preview = useFooterV3Preview();
+  const modal = useContactModal();
   const footerSettings = preview?.settings ?? defaultFooterV3PreviewSettings;
   const hasPreviewColors = Boolean(preview);
   const layoutWidth = footerSettings.layoutWidth;
@@ -108,6 +111,12 @@ export function FooterV3({ description }: FooterV3Props) {
               )}
               <Link
                 href="/contact"
+                onClick={(event) => {
+                  if (modal) {
+                    event.preventDefault();
+                    modal.openContact();
+                  }
+                }}
                 className="footer-v3-accent-text footer-v3-contact-link mt-2 inline-flex items-center gap-2 text-sm font-medium transition-colors"
               >
                 Contact us
@@ -124,6 +133,9 @@ export function FooterV3({ description }: FooterV3Props) {
                 onClick={(event) => {
                   if (scrollToHashHref(item.href)) {
                     event.preventDefault();
+                  } else if (modal && isContactHref(item.href)) {
+                    event.preventDefault();
+                    modal.openContact();
                   }
                 }}
                 className="rounded-full border border-border bg-surface/40 px-4 py-2 text-sm text-muted transition-colors hover:border-accent-purple/30 hover:text-foreground"

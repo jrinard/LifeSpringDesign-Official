@@ -10,20 +10,25 @@ export const heroDemo = {
 
 export const heroV21Demo = {
   headlineLines: ["Technology That Works", "The Way Your Business Works"],
-  subtext:
+  subtextLines: [
     "Custom websites, software, and digital solutions that solve real business problems so you can focus on what you do best.",
+    "Built around your goals, your workflow, and the way your business operates.",
+    "A trusted technology partner helping your business grow with confidence.",
+    "From websites to custom software, we create solutions that move your business forward.",
+  ],
   ctaLabel: "Let's Talk",
   ctaHref: "/contact",
   highlights: [
     {
-      title: "Web Design & Development",
-      description: "Fast, polished sites built around how you actually work.",
+      title: "Websites That Grow Your Business",
+      description:
+        "Build trust, attract customers, and create a strong online presence with a website designed around your goals.",
       href: "#services",
     },
     {
-      title: "Grow Business Reputation with Reviewbox.io",
+      title: "Get More Customer Reviews",
       description:
-        "Use Reviewbox.io to consistently get better quality Google reviews for building a better online reputation.",
+        "Turn happy customers into positive Google reviews and build trust with future customers.",
       href: "#reviewbox",
     },
   ],
@@ -409,6 +414,14 @@ export const ctaContent = {
   subtext: "Let us talk about what you are building and what comes next.",
   ctaLabel: "Contact Us",
   ctaHref: "/contact",
+};
+
+export const contactContent = {
+  title: "Let's Talk",
+  subtext: "Let's start the conversation with a Free Consultation",
+  phonePrefix: "Call us at",
+  formDivider: "or",
+  formIntro: "Send us a message",
 };
 
 export const reviewboxContent = {

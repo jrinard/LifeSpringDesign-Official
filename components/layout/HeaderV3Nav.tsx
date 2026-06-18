@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { useHeaderV3Preview } from "@/components/dev/HeaderV3PreviewContext";
+import { useContactModal } from "@/components/contact/ContactModalContext";
 import type { NavItem } from "@/components/layout/Nav";
+import { isContactHref } from "@/lib/contact-modal";
 import { scrollToHashHref } from "@/lib/scroll-to-hash";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +24,7 @@ export function HeaderV3Nav({
   className,
 }: HeaderV3NavProps) {
   const preview = useHeaderV3Preview();
+  const modal = useContactModal();
   const isCustom = Boolean(preview);
   const isVertical = orientation === "vertical";
 
@@ -45,6 +48,9 @@ export function HeaderV3Nav({
           onClick={(event) => {
             if (scrollToHashHref(item.href)) {
               event.preventDefault();
+            } else if (modal && isContactHref(item.href)) {
+              event.preventDefault();
+              modal.openContact();
             }
             onNavigate?.();
           }}
