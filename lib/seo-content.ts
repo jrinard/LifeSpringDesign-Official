@@ -3,11 +3,11 @@ import { siteConfig } from "@/config/site";
 /** Per-route metadata copy — swap for client launch. */
 export const pageSeo = {
   home: {
-    title: "Under Construction",
+    title: "Web Design & Development",
     description:
-      "LifeSpring Design is crafting something extraordinary. Expert web design and digital experiences for businesses ready to grow.",
+      "LifeSpring Design — custom websites, software, branding, and Reviewbox.io review management for businesses in Washington, Oregon, and Idaho.",
     path: "/",
-    noIndex: true,
+    noIndex: false,
   },
   about: {
     title: "About",

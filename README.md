@@ -1,27 +1,26 @@
-# LifeSpring Starter
+# LifeSpring Design — Official Website
 
-A **Next.js website starter** built by [LifeSpring Design](https://lifespringdesign.com) — the foundation used to design, preview, and launch client marketing sites that are fast, accessible, and search-engine friendly.
+The marketing site for [LifeSpring Design](https://lifespringdesign.com) — custom websites, software, and branding for businesses in Washington, Oregon, and Idaho.
 
-If you are evaluating LifeSpring for a new website, this repo reflects how projects are built: modular page sections, live design preview, and SEO handled from the start — not added as an afterthought.
+Built on the LifeSpring boilerplate (modular sections, design preview, SEO from the start). This repo is the live official site, not the reusable starter template.
 
 ---
 
-## What you get
+## Current status
 
-- **Flexible page sections** — headers, heroes, services, testimonials, calls-to-action, footers
-- **Design preview** — try layouts, colors, and typography before launch
-- **SEO-ready** — page metadata, sitemap, structured data for search engines
-- **Simple configuration** — business name, contact info, navigation, and logos in one place
+- **`/`** — under construction holding page (soft launch)
+- **`/playground`** — internal section builder for designing the real homepage
+- **`/preview`** — agency-style layout preview
 
-The live homepage (`/`) currently shows an under-construction screen while projects are in development.
+Full launch replaces `/` with the approved homepage from the playground.
 
 ---
 
 ## Tech stack
 
 - **Next.js** (App Router) · **TypeScript** · **Tailwind CSS**
-- Deployed on **Vercel**
-- No database or paid services required to run locally
+- **Vercel** for hosting
+- **Resend** for contact form email · **reCAPTCHA Enterprise** for spam protection
 
 ---
 
@@ -30,9 +29,10 @@ The live homepage (`/`) currently shows an under-construction screen while proje
 **Requirements:** Node.js 20+ and npm.
 
 ```bash
-git clone <your-repo-url>
-cd lifespring-starter
+git clone <repo-url>
+cd LifeSpringDesign-Official
 npm install
+cp .env.local.example .env.local   # fill in keys
 npm run dev
 ```
 
@@ -46,28 +46,42 @@ npm run lint    # Lint
 
 ### Environment variables
 
-The project runs without env vars by default. For future integrations (email, CRM, analytics), use `.env.example` as a template and keep secrets in a local `.env` file — never commit it.
+Copy `.env.local.example` to `.env.local` and fill in:
+
+| Variable | Purpose |
+|----------|---------|
+| `RESEND_API_KEY` | Contact form email delivery |
+| `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` | reCAPTCHA site key |
+| `RECAPTCHA_PROJECT_ID` | Google Cloud project |
+| `RECAPTCHA_API_KEY_SECRET` | reCAPTCHA API secret |
+
+Optional: `CONTACT_LEAD_TO`, `CONTACT_LEAD_FROM` (see `docs/resend-setup.md`).
+
+Never commit `.env.local`.
 
 ---
 
-## New client project
+## Key files
 
-1. Update **`config/site.ts`** — business name, domain, contact info, navigation, logos
-2. Replace copy and images in **`public/`**
-3. Build out pages from the section components in **`components/sections/`**
-4. Deploy to Vercel and connect the client’s domain
+| File | Purpose |
+|------|---------|
+| `config/site.ts` | Business identity, nav, logos, contact info |
+| `lib/seo-content.ts` | Page titles, descriptions, metadata |
+| `lib/color-themes.ts` | Theme defaults for `/playground` |
+| `app/page.tsx` | Public homepage (under construction until full launch) |
 
-A detailed launch checklist (metadata, sitemap, go-live steps) lives in **`docs/SEO.md`**.
+Launch checklists: `docs/NEW-CLIENT.md` · `docs/SEO.md` · `docs/resend-setup.md`
 
 ---
 
 ## Deployment
 
 1. Push to GitHub
-2. Import the repo in [Vercel](https://vercel.com)
-3. Set the production domain in Vercel and in `config/site.ts`
+2. Import in [Vercel](https://vercel.com)
+3. Mirror `.env.local` vars in the Vercel dashboard
+4. Connect **lifespringdesign.com** in Vercel and confirm `config/site.ts` matches
 
-No API keys or secrets are needed for the default build.
+Before production go-live: verify the sending domain in Resend and set `CONTACT_LEAD_FROM`.
 
 ---
 
@@ -75,4 +89,4 @@ No API keys or secrets are needed for the default build.
 
 LifeSpring Design builds modern marketing websites for businesses that want a polished online presence without unnecessary complexity.
 
-**Questions or want to hire?** [lifespringdesign.com](https://lifespringdesign.com)
+**Contact:** [lifespringdesign.com](https://lifespringdesign.com) · 208-316-8338 · josh@lifespringdesign.com

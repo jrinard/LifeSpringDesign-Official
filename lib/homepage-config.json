@@ -1,0 +1,90 @@
+{
+  "sections": [
+    {
+      "group": "header",
+      "variant": "header-v3"
+    },
+    {
+      "group": "spacer",
+      "variant": "spacer-v1"
+    },
+    {
+      "group": "hero",
+      "variant": "hero-v2.1"
+    },
+    {
+      "group": "reviewbox",
+      "variant": "reviewbox-v1"
+    },
+    {
+      "group": "portfolio"
+    },
+    {
+      "group": "services",
+      "variant": "services-v1"
+    },
+    {
+      "group": "footer",
+      "variant": "footer-v3"
+    }
+  ],
+  "colorThemeId": "lifespring",
+  "fontThemeId": "impact",
+  "previewSettings": {
+    "heroV21": {
+      "button": {
+        "navBackground": "#85a33f",
+        "navTextColor": "#ffffff",
+        "navTextHoverColor": "#85a33f",
+        "navHoverBackground": "transparent",
+        "navButtonSize": "large"
+      },
+      "background": {
+        "from": "#29753c",
+        "to": "#0955a3",
+        "intensity": 100
+      }
+    },
+    "headerV3": {
+      "from": "#1b1b1b",
+      "to": "#030303",
+      "navBackground": "transparent",
+      "navTextColor": "#ffffff",
+      "navTextHoverColor": "#85a33f",
+      "navHoverBackground": "transparent",
+      "navButtonSize": "medium",
+      "logoVariant": "color",
+      "layoutWidth": "full"
+    },
+    "reviewbox": {
+      "background": {
+        "from": "#ffffff",
+        "to": "#4d82b8",
+        "intensity": 78
+      },
+      "theme": "dark",
+      "bodyColor": "#4d82b8",
+      "titleColor": "#ffffff"
+    },
+    "footerV3": {
+      "copyrightColor": "#ffffff",
+      "domainColor": "#ffffff",
+      "socialColor": "#ffffff",
+      "socialHoverColor": "#ffffff",
+      "layoutWidth": "full",
+      "logoVariant": "color",
+      "theme": "dark"
+    },
+    "portfolio": {
+      "theme": "light"
+    },
+    "servicesV1LayoutWidth": "full",
+    "spacerStripe": {
+      "from": "#0955a3",
+      "to": "#85a33f",
+      "direction": "to left",
+      "mode": "center-fade",
+      "heightPx": 3
+    }
+  }
+}

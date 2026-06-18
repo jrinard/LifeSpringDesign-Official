@@ -108,7 +108,12 @@ function parseStoredHeroV21Preview(raw: string): HeroV21PreviewSettings | null {
   return null;
 }
 
+import { getCommittedHomepagePreviewSettings } from "@/lib/homepage-settings";
+
 export function loadHeroV21PreviewSettings(): HeroV21PreviewSettings {
+  const committed = getCommittedHomepagePreviewSettings()?.heroV21;
+  if (committed) return committed;
+
   if (typeof window === "undefined") {
     return defaultHeroV21PreviewSettings;
   }
