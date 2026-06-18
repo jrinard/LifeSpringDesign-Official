@@ -67,9 +67,10 @@ function normalizeBackgroundSettings(
   };
 }
 
-function normalizeHeroV21PreviewSettings(
-  value: Partial<HeroV21PreviewSettings>,
-): HeroV21PreviewSettings {
+function normalizeHeroV21PreviewSettings(value: {
+  button?: Partial<ButtonPreviewSettings>;
+  background?: Partial<HeroV21BackgroundSettings>;
+}): HeroV21PreviewSettings {
   return {
     button: normalizeButtonSettings(value.button ?? {}),
     background: normalizeBackgroundSettings(value.background ?? {}),

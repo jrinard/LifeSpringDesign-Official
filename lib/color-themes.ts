@@ -95,7 +95,7 @@ export const colorThemes: ColorTheme[] = [
   },
 ];
 
-export const defaultColorThemeId: ColorThemeId = "dark";
+export const defaultColorThemeId: ColorThemeId = "lifespring";
 
 export function getColorTheme(id: ColorThemeId | string): ColorTheme {
   const normalizedId = id === "washing" ? "ocean" : id;
