@@ -6,11 +6,17 @@
     },
     {
       "group": "spacer",
-      "variant": "spacer-v1"
+      "variant": "spacer-v1",
+      "id": "spacer-b49ee9b9"
     },
     {
       "group": "hero",
       "variant": "hero-v2.1"
+    },
+    {
+      "group": "spacer",
+      "variant": "spacer-v1",
+      "id": "spacer-6288a5c6"
     },
     {
       "group": "reviewbox",
@@ -67,10 +73,15 @@
       "titleColor": "#ffffff"
     },
     "footerV3": {
-      "copyrightColor": "#ffffff",
-      "domainColor": "#ffffff",
+      "subtextColor": "#4d82b8",
+      "extraTextColor": "#ffffff",
+      "linkColor": "#4d82b8",
+      "linkHoverColor": "#ffffff",
+      "accentColor": "#5696d7",
+      "copyrightColor": "#85a33f",
+      "domainColor": "#dedede",
       "socialColor": "#ffffff",
-      "socialHoverColor": "#ffffff",
+      "socialHoverColor": "#4d82b8",
       "layoutWidth": "full",
       "logoVariant": "color",
       "theme": "dark"
@@ -85,6 +96,20 @@
       "direction": "to left",
       "mode": "center-fade",
       "heightPx": 3
+    },
+    "spacers": {
+      "spacer-6288a5c6": {
+        "stripe": {
+          "from": "#0955a3",
+          "to": "#85a33f",
+          "direction": "to right",
+          "mode": "center-fade",
+          "heightPx": 3
+        },
+        "gradient": {
+          "heightPx": 40
+        }
+      }
     }
   }
 }

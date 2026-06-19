@@ -54,7 +54,7 @@ export const siteConfig = {
     ogImage: "/lsd/LS-logo-color.png",
   },
   launch: {
-    mode: "under-construction" as "under-construction" | "live",
+    mode: "live" as "under-construction" | "live",
     previewPlaygroundPath: "/playground",
     previewPath: "/preview",
   },
