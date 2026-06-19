@@ -14,12 +14,14 @@ export const pageSeo = {
     description:
       "Learn about LifeSpring Design — our mission, approach, and commitment to building fast, beautiful marketing websites.",
     path: "/about",
+    noIndex: true,
   },
   services: {
     title: "Services",
     description:
       "Web design, development, and SEO services from LifeSpring Design. Custom sites built with Next.js and search-ready architecture.",
     path: "/services",
+    noIndex: true,
   },
   contact: {
     title: "Contact",
@@ -27,11 +29,19 @@ export const pageSeo = {
       "Contact LifeSpring Design for a free consultation. Tell us about your project and we'll help you plan a site that converts.",
     path: "/contact",
   },
+  projects: {
+    title: "Projects",
+    description:
+      "Web design, development, and branding projects from LifeSpring Design — custom websites and digital work for Northwest businesses.",
+    path: "/projects",
+    noIndex: true,
+  },
   blog: {
     title: "Blog",
     description:
       "Insights on web design, branding, and digital marketing from the LifeSpring Design team.",
     path: "/blog",
+    noIndex: true,
   },
   playground: {
     title: "Playground",

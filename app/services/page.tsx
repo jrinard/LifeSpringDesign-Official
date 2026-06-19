@@ -9,6 +9,7 @@ export const metadata = createMetadata({
   title: pageSeo.services.title,
   description: pageSeo.services.description,
   path: pageSeo.services.path,
+  noIndex: pageSeo.services.noIndex,
 });
 
 export default function ServicesPage() {
