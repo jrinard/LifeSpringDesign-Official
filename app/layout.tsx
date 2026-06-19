@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import {
   Geist,
   Geist_Mono,
@@ -72,6 +73,7 @@ export default function RootLayout({
       >
         <SiteJsonLd />
         <RecaptchaProvider>{children}</RecaptchaProvider>
+        <Analytics />
       </body>
     </html>
   );

@@ -292,7 +292,7 @@ export function ReviewboxV1({
                 </Button>
               </Link>
               {ctaSubtext && (
-                <p className="reviewbox-v1-cta-subtext mt-2 text-center text-xs sm:text-left">{ctaSubtext}</p>
+                <p className="reviewbox-v1-cta-subtext mt-2 text-center text-sm sm:text-left">{ctaSubtext}</p>
               )}
             </div>
           </div>

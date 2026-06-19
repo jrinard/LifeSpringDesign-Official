@@ -2015,11 +2015,7 @@ body {
 }
 
 .reviewbox-v1-cta-subtext {
-  color: #8888a0;
-}
-
-.reviewbox-v1[data-reviewbox-theme="light"] .reviewbox-v1-cta-subtext {
-  color: #6b6b80;
+  color: #999;
 }
 
 .reviewbox-v1-bg {
