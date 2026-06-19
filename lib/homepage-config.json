@@ -60,7 +60,7 @@
       "navHoverBackground": "transparent",
       "navButtonSize": "medium",
       "logoVariant": "color",
-      "layoutWidth": "full"
+      "layoutWidth": "contained"
     },
     "reviewbox": {
       "background": {
