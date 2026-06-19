@@ -430,7 +430,7 @@ export const reviewboxContent = {
   logoAlt: "Reviewbox.io logo — online review management software",
   headlineLines: ["Better reviews.", "Less effort."],
   subtext:
-    "Helps your customers leave consistent, quality reviews on Google, Yelp, and Facebook—so your reputation keeps growing while you stay focused on the work.",
+    "helps your customers leave consistent, quality reviews on Google, Yelp, and Facebook—so your reputation keeps growing while you stay focused on the work.",
   productLink: {
     label: "Reviewbox",
     href: "https://reviewbox.io",
