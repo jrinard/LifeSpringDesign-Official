@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { Container } from "@/components/ui/Container";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { createMetadata } from "@/lib/seo";
@@ -14,6 +15,7 @@ export const metadata = createMetadata({
 export default function ContactPage() {
   return (
     <>
+      <GoogleAnalytics />
       <Header />
       <main id="main-content">
         <section className="py-24">

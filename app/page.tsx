@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { UnderConstruction } from "@/components/under-construction/UnderConstruction";
 import { LiveHomePage } from "@/components/pages/LiveHomePage";
 import { SiteShell } from "@/components/layout/SiteShell";
@@ -40,11 +41,17 @@ export default async function Home() {
   const [launchMode, config] = await Promise.all([readLaunchMode(), readHomepageConfig()]);
 
   if (isUnderConstruction(launchMode)) {
-    return <UnderConstruction />;
+    return (
+      <>
+        <GoogleAnalytics />
+        <UnderConstruction />
+      </>
+    );
   }
 
   return (
     <SiteShell config={config}>
+      <GoogleAnalytics />
       <JsonLd
         data={[
           buildPortfolioItemListSchema(projects, "LifeSpring Design Web Projects"),
